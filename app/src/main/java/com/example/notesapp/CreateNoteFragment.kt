@@ -35,7 +35,7 @@ class CreateNoteFragment : BaseFragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            HomeFragment().apply {
+            CreateNoteFragment().apply {
                 arguments = Bundle().apply {
                 }
             }
@@ -60,25 +60,23 @@ class CreateNoteFragment : BaseFragment() {
     private fun saveNote(){
         if(et_note_title.text.isNullOrEmpty()){
             Toast.makeText(context, "Title Required", Toast.LENGTH_SHORT).show()
-        }
-        if(et_note_sub_title.text.isNullOrEmpty()){
+        } else if(et_note_sub_title.text.isNullOrEmpty()){
             Toast.makeText(context, "Sub-title Required", Toast.LENGTH_SHORT).show()
-        }
-        if(et_note_description.text.isNullOrEmpty()){
+        } else if(et_note_description.text.isNullOrEmpty()){
             Toast.makeText(context, "Description Required", Toast.LENGTH_SHORT).show()
-        }
-
-        launch {
-            val notes = Notes()
-            notes.title = et_note_title.text.toString()
-            notes.subTitle = et_note_sub_title.text.toString()
-            notes.noteText = et_note_description.text.toString()
-            notes.dateTime = currentDate
-            context?.let {
-                NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
-                et_note_description.setText("")
-                et_note_sub_title.setText("")
-                et_note_title.setText("")
+        } else {
+            launch {
+                val notes = Notes()
+                notes.title = et_note_title.text.toString()
+                notes.subTitle = et_note_sub_title.text.toString()
+                notes.noteText = et_note_description.text.toString()
+                notes.dateTime = currentDate
+                context?.let {
+                    NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
+                    et_note_description.setText("")
+                    et_note_sub_title.setText("")
+                    et_note_title.setText("")
+                }
             }
         }
     }

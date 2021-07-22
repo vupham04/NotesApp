@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/_10sdp"
         android:layout_margin="@dimen/_10sdp"
+        android:background="@null"
         app:layout_constraintTop_toBottomOf="@+id/img_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,8 @@
         android:textColorHint="@color/grey"
         android:hint="@string/notes_title"
         android:maxLines="1"
-        android:ellipsize="end"/>
+        android:ellipsize="end"
+        android:inputType="text"/>
 
     <TextView
         android:id="@+id/tv_date_time"
@@ -90,10 +92,12 @@
             android:fontFamily="@font/manrope_regular"
             android:textColor="@color/white"
             android:textSize="@dimen/_10ssp"
+            android:background="@null"
             android:textColorHint="@color/grey"
             android:hint="@string/notes_sub_title"
             android:maxLines="1"
-            android:ellipsize="end"/>
+            android:ellipsize="end"
+            android:inputType="text"/>
     </LinearLayout>
 
     <EditText
@@ -108,6 +112,7 @@
         android:textColor="@color/white"
         android:inputType="textMultiLine"
         android:textSize="@dimen/_12ssp"
+        android:background="@null"
         android:fontFamily="@font/manrope_regular"
         android:textColorHint="@color/grey"
         android:hint="@string/notes_description"/>
